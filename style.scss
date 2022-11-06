@@ -1,0 +1,66 @@
+.siteBorder {
+    width: 98vw;
+    height: 95vh;
+    border: 5px solid;
+    border-radius: 35px;
+    margin-top: 1.4rem;
+    margin-left: 0.3rem;
+}
+
+.logo {
+    margin-top: 1.875rem;
+    margin-left: 2.5rem;
+    font-size: 4rem;
+    float: left;
+    margin-right: 11rem;
+}
+
+.filterStrip {
+    display: flex;
+    float: right;
+    margin-top: 4rem;
+    margin-left: 9rem;
+}
+
+.filter {
+    margin-right: 15px;
+    width: 8rem;
+}   
+
+.searchBar {
+    margin-top: 4rem;
+    margin-left: 8px;
+}
+
+.searchBar input {
+    width: 400px;
+}
+
+.card {
+    width: 19rem;
+    height: 30rem;
+}
+
+#bountyBoard, #bountyBoard2 {
+    margin-left: 3.4rem;
+}
+
+.mySwiper {
+    height: 39.375rem;
+}
+
+.swiperNav {
+    margin-top: -10px;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    top: 38%;
+}
+
+.swiper-button-prev {
+    left: 1.2%;
+}
+
+.swiper-button-next {
+    right: 1.2%;
+}
