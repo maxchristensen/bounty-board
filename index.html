@@ -37,7 +37,7 @@
           <!-- reward select -->
           <div class="col-4">
             <select class="filter form-select" id="selectReward">
-              <option selected>Reward</option>
+              <option id="rewardFilterTitle" selected>Reward</option>
 
             </select>
           </div>
@@ -62,8 +62,9 @@
         <!-- searchbar -->
         <div class="searchBar">
           <div class="input-group">
-            <input class="p-1 rounded-5" type="text" aria-label="First name" class="form-control"
-              placeholder="  Type something here...">
+            <div class="input-group">
+              <input class="form-control" id="searchInput" type="search" placeholder="Search Movie Titles..." aria-label="Search">
+              <button class="btn" id="searchBtn" type="button">Search Movie</button>
           </div>
         </div>
 

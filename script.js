@@ -88,10 +88,41 @@ reward.addEventListener('change', filterReward);
 kind.addEventListener('change', filterKind);
 partySize.addEventListener('change', filterPartySize);
 
+rewardFilterTitle.addEventListener('click', function(){
+  return getAllBounties();
+})
+
+search.addEventListener('click', searchBounties);
+
+searchInput.addEventListener('keyup', function(event){
+  var input = event.target.value;
+  var bountiesOutput = document.getElementById('bountyBoard');
+  var bountyOutput2 = document.getElementById('bountyBoard2');
+  bountiesOutput.innerHTML = " ";
+  for (let i = 0; i < bounties.length; i++) {
+    if (bounties[i].name.toLowerCase().includes(input.toLowerCase())) {
+      var bounty = bounties[i];
+      bountiesOutput.innerHTML +=
+      `
+      <div class="col-3">
+        <div class="card rounded-4">
+            <img src="${bounty.image}" class="card-img-top" alt="image of ${bounty.name}">
+            <div class="card-body">
+              <h2 class="card-text text-center">${bounty.name}</h2>
+              <h4 class="card-text text-center">${bounty.reward}</h4>
+            </div>
+        </div>
+      </div>
+      `
+    }
+    
+  }
+})
 
 // create the functions for each individual filter
 function filterReward() {
   var bountyOutput = document.getElementById('bountyBoard');
+  var bountyOutput2 = document.getElementById('bountyBoard2');
   bountyBoard.innerHTML = " ";
   for(var i = 0; i < bounties.length; i++) {
       var bounty = bounties[i];
@@ -114,6 +145,8 @@ function filterReward() {
 
 function filterKind() {
   var bountyOutput = document.getElementById('bountyBoard');
+  var bountyOutput2 = document.getElementById('bountyBoard2');
+
   bountyBoard.innerHTML = " ";
   for(var i = 0; i < bounties.length; i++) {
       var bounty = bounties[i];
@@ -136,6 +169,7 @@ function filterKind() {
 
 function filterPartySize() {
   var bountyOutput = document.getElementById('bountyBoard');
+  var bountyOutput2 = document.getElementById('bountyBoard2');
   bountyBoard.innerHTML = " ";
   for(var i = 0; i < bounties.length; i++) {
       var bounty = bounties[i];
@@ -196,12 +230,18 @@ getAllBounties();
 function getAllRewards() {
   var rewardOutput = document.getElementById('selectReward');
   for(var i = 0; i < bounties.length; i++) {
-      var bounty = bounties[i];
-      rewardOutput.innerHTML +=
-          `<option value="${bounty.reward}">${bounty.reward}</option>`
+    var bountyReward = [bounties[i].reward];
+    bountyReward.sort(function(a, b) {
+      return parseInt(a) - parseInt(b)
+    });
+    rewardOutput.innerHTML +=
+      `<option value="${bountyReward}">${bountyReward}</option>`
   }
 }
 getAllRewards();
+
+// 
+
 
 function getAllKinds() {
   var kindOutput = document.getElementById('selectKind');
@@ -224,3 +264,25 @@ function getAllPartySizes() {
 }
 getAllPartySizes();
 
+function searchBounties(){
+  var bountiesOutput = document.getElementById('bountyBoard');
+  var bountyOutput2 = document.getElementById('bountyBoard2');
+
+  bountiesOutput.innerHTML = " ";
+  var searchValue = searchInput.value;
+  for (let i = 0; i < bounties.length; i++) {
+    var bounty = bounties[i];
+    if (searchValue.toLowerCase() == bounty.title.toLowerCase()) {
+      bountiesOutput.innerHTML +=
+      `
+      <div class="col-3">
+        <div class="card rounded-4">
+            <img src="${bounty.image}" class="card-img-top" alt="image of ${bounty.name}">
+            <div class="card-body">
+              <h2 class="card-text text-center">${bounty.name}</h2>
+              <h4 class="card-text text-center">${bounty.reward}</h4>
+            </div>
+        </div>
+      </div>
+      `
+}}}
